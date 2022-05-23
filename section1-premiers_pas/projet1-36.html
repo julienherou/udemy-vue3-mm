@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>projet 1-36</title>
+    <script src="https://unpkg.com/vue@next"></script>
+</head>
+<body>
+
+    <!-- 22. Gestion des styles inline -->
+
+    <!-- Vue -->
+    <div id="app">
+
+        <label>Couleur</label>
+        <select v-model="couleur">
+            <option value="black" selected>Noir</option>
+            <option value="red">Rouge</option>
+            <option value="green">Vert</option>
+            <option value="blue">Bleu</option>
+        </select>
+
+        <label>Taille</label>
+        <select v-model="taille">
+            <option value="16px" selected>16 px</option>
+            <option value="25px">25 px</option>
+            <option value="40px">40 px</option>
+            <option value="60px">60 px</option>
+        </select>
+
+        <p v-bind:style="{ color: couleur, fontSize: taille }">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam vestibulum diam id gravida molestie. In hac habitasse platea dictumst. Ut at ornare dolor, id faucibus quam. Proin rhoncus, purus a consectetur euismod, metus nibh viverra dui, in varius nulla lacus vel mi. Nulla ut augue sapien. Fusce sagittis auctor blandit. Integer volutpat a ante sit amet consequat. Aliquam gravida ante lacus. In ut hendrerit mi, vel auctor nunc. Proin pharetra tortor quis eros hendrerit, nec lobortis arcu blandit. Interdum et malesuada fames ac ante ipsum primis in faucibus.
+        </p>
+
+    </div>
+    
+    <!-- Modèle -->
+    <script>
+        const app = Vue.createApp({
+            data() {
+                return {
+                    couleur: 'black',
+                    taille: '16px'
+                }
+            }
+        });
+        app.mount('#app');
+    </script>
+
+</body>
+</html>

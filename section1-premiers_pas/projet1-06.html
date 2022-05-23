@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>projet 1-06 - Data binding</title>
+    <script src="https://unpkg.com/vue@next"></script>
+</head>
+<body>
+
+    <!-- 7. Data binding -->
+
+    <div id="app">
+        <!-- Exemple de data binding : v-bind -->
+        <!-- Pour binder un attribut du modele à un attribut de la vue -->
+        <img v-bind:src="url">
+    </div>
+
+    <script>
+        const app = Vue.createApp({
+            data() {
+                return {
+                    url: 'https://vuejs.org/images/logo.png'
+                }
+            } 
+        });
+        app.mount('#app');
+    </script>
+
+</body>
+</html>

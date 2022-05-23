@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>projet 1-11 - Horloge</title>
+    <script src="https://unpkg.com/vue@next"></script>
+</head>
+<body>
+
+    <!-- 8. innerHTML et nœud texte -->
+
+    <div id="app">
+        <span>{{horloge}}</span>
+    </div>
+
+    <script>
+        const app = Vue.createApp({
+            data() {
+                return {
+                    horloge: ''
+                }
+            },
+        });
+
+        let vm = app.mount('#app');
+        setInterval( () => {
+            let d = new Date();
+            vm.horloge = d.toLocaleTimeString()
+        }, 1000);
+
+    </script>
+
+</body>
+</html>

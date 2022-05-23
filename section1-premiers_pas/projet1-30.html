@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>projet 1-30</title>
+    <script src="https://unpkg.com/vue@next"></script>
+</head>
+
+<body>
+
+    <!-- 17. Directive v-for pour parcourir des objets JSON -->
+
+    <!-- Vue -->
+    <div id="app">
+        <ul>
+            <li v-for="personne in personnes">
+                {{personne.prenom}} {{personne.nom}} {{personne.age}} ans
+            </li>
+        </ul>
+    </div>
+
+    <!-- Modèle -->
+    <script>
+        const app = Vue.createApp({
+            data() {
+                return {
+                    personnes: [
+                        {
+                            prenom: 'Pierrick',
+                            nom: 'Martin',
+                            age: 24
+                        },
+                        {
+                            prenom: 'Bob',
+                            nom: 'Léponge',
+                            age: 14
+                        },
+                        {
+                            prenom: 'Pirouette',
+                            nom: 'Cacahouette',
+                            age: 2
+                        },
+                        {
+                            prenom: 'Pouette-pouette',
+                            nom: 'Prout',
+                            age: 40
+                        }
+                    ]
+                }
+            }
+        });
+        app.mount('#app');
+    </script>
+
+</body>
+
+</html>

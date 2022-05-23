@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>projet 1-25 - $event</title>
+    <script src="https://unpkg.com/vue@next"></script>
+</head>
+<body>
+
+    <!-- 14. Suffixes stop et prevent de Vue -->
+    
+    <!-- Vue -->
+    <div id="app">
+        <img src="../img/sergey-semin-Y0WXj3xqJz0-unsplash.jpg"
+            v-bind:width="valeur"
+            v-on:click.left="largeur(200)"
+            v-on:click.right="largeur(100)"
+            v-on:click.middle="largeur(400)">
+    </div>
+    
+    <!-- Modèle -->
+    <script>
+        const app = Vue.createApp({
+            data() {
+                return {
+                    valeur: 300
+                }
+            },
+            methods: {
+                largeur(lar){
+                    this.valeur = lar;
+                }
+            }
+        });
+        app.mount('#app');
+    </script>
+
+</body>
+</html>

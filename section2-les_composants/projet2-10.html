@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>projet 2-10</title>
+    <script src="https://unpkg.com/vue@next"></script>
+</head>
+<body>
+
+    <!-- 32. Accès à une prop dans le modèle du composant -->
+
+    <!-- Vue -->
+    <div id="app">
+        <maj texte="Texte à mettre en majuscules"></maj>
+    </div>
+    
+    <!-- Modèle -->
+    <script>
+        const app = Vue.createApp({
+        });
+        app.component('maj', {
+            template: '<div>{{enMaj}}</div>',
+            props: ['texte'],
+            data() {
+                return {
+                    enMaj: this.texte.toUpperCase()
+                }
+            }
+        })
+        app.mount('#app');
+    </script>
+
+</body>
+</html>

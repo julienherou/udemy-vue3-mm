@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>projet 1-34</title>
+    <script src="https://unpkg.com/vue@next"></script>
+    <style>
+        .rouge {
+            color: red;
+        }
+        li {
+            list-style: none;
+        }
+    </style>
+</head>
+<body>
+    <!-- 21. Classes conditionnelles -->
+
+    <!-- Vue -->
+    <div id="app">
+        <p>Quels languages de programmation connaissez-vous ?</p>
+        <input type="text" v-model="unLang">
+        <input type="button" value="Valider" @click="ajouter">
+        <ul>
+            <li v-for="lan in langages">
+                <input type="checkbox" v-model="lan.etatCase">
+                <span v-bind:class="{ rouge:lan.etatCase }">{{lan.lang}}</span>
+            </li>
+        </ul>
+    </div>
+
+    <!-- Modèle -->
+    <script>
+        const app = Vue.createApp({
+            data() {
+                return {
+                    unLang: '',
+                    langages: []
+                }
+            },
+            methods: {
+                ajouter() {
+                    // on stock la langue et l'état de la case dans un objet json
+                    this.langages.push(
+                        {
+                            lang: this.unLang,
+                            etatCase: false
+                        }
+                    );
+                }
+            }
+        });
+        app.mount('#app');
+    </script>
+
+</body>
+</html>

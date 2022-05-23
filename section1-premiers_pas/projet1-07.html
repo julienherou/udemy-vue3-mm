@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>projet 1-07</title>
+    <script src="https://unpkg.com/vue@next"></script>
+    <style>
+        #pouette{
+            background: rgb(218, 216, 216);
+            width: 20rem;
+            height: 5rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 7. Data binding -->
+
+    <div id="app">
+        <div v-bind:id="idDuDiv">Une simple balise DIV</div>
+    </div>
+
+    <script>
+        const app = Vue.createApp({
+            data() {
+                return {
+                    idDuDiv: "pouette"
+                }
+            } 
+        });
+        app.mount('#app');
+    </script>
+
+</body>
+</html>

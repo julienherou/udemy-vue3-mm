@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>projet 2-15</title>
+    <script src="https://unpkg.com/vue@next"></script>
+    <!-- Lib axios pour faire des requêtes -->
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <style>
+        .container{
+            background: #f1f1f1;
+            padding: 2rem;
+            width: 50rem;
+            height: 100vh;
+            border-radius: 1rem;
+        }
+        .card {
+            display: flex;
+            margin-bottom: 2rem;
+            background: white; 
+            border-radius: 1rem;
+            overflow: hidden;
+            width: 40rem;
+            height: 8rem;
+            transition: all 0.5s;
+            transform-origin: left;
+        }
+        img {
+            width: 8rem;
+            object-fit: cover;
+        }
+        .card:hover{
+            width: 50rem;
+            height: 9rem;
+        }
+        .card:last-child{
+            margin-bottom: 0;
+        }
+        .text {
+            margin-left: 1rem;
+        }
+        p {
+            margin: 0;
+            line-height: 1;
+        }
+        .name {
+            font-size: 3rem;
+            font-weight: 500;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 35. Lifecycle Hooks -->
+
+    <!-- Vue -->
+    <div id="app">
+        <div class="container">
+            <div class="card" v-for="user in users">
+                <img v-bind:src="user.picture.large">
+                <div class="text">
+                    <p><span class="name">{{user.name.first}} {{user.name.last}}</span><br>
+                    {{user.location.city}} - {{user.location.country}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Modèle -->
+    <script>
+        // const url = 'https://randomuser.me/api/?results=3';
+        // fetch(url)
+        //     .then((results) => {
+        //         return results.json();
+        //     })
+        //     .then((data) => {
+        //         console.log(data);
+        //     });
+        
+        const urlApi = 'https://randomuser.me/api/?results=3';
+
+        const app = Vue.createApp({
+            data() {
+                return {
+                    users: []
+                }
+            },
+            created() {
+                axios.get(urlApi).then(function(reponse) {
+                    console.log(reponse.data.results);
+                    vm.users = reponse.data.results;
+                });
+            }
+        });
+        let vm = app.mount('#app');
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>projet 2-08</title>
+    <script src="https://unpkg.com/vue@next"></script>
+</head>
+<body>
+
+    <!-- 31. Passer des données aux composants enfants avec des props -->
+    <!-- Local -->
+
+    <!-- Vue -->
+    <div id="app">
+        <bonjour prenom="Julien"></bonjour>
+        <bonjour prenom="Bob"></bonjour>
+        <bonjour prenom="Jerry"></bonjour>
+    </div>
+    
+    <!-- Modèle -->
+    <script>
+        const Bonjour = {
+            template: '<div>Bonjour {{prenom}}</div>',
+            props: ['prenom']
+        }
+        const app = Vue.createApp({
+            components: {
+                'bonjour': Bonjour
+            }
+        });
+        app.mount('#app');
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>projet 2-14</title>
+    <script src="https://unpkg.com/vue@next"></script>
+    <style>
+        #app{
+            display: flex;
+        }
+        button, .total{
+            font-size: 5rem;
+            width: 10rem;
+            height: 10rem;
+            border-radius: 50%;
+            text-align: center;
+            cursor: pointer;
+            border: none;
+            transition: box-shadow ease-in-out 0.4s;
+            margin: 1rem;
+        }
+        button:hover {
+            background: yellow;
+            box-shadow: 0px 1px 235px -153px rgba(0,0,0,0.91);
+        }
+        .total{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-sizing: border-box;
+            cursor: inherit;
+            background: rgb(224, 195, 200);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 34. Custom-events - Envoi de messages au parent par un composant avec $emit -->
+
+    <!-- Vue -->
+    <div id="app">
+        <div class="total">{{total}}</div>
+        <compteur @incremente="plusUn"></compteur>
+        <compteur @incremente="plusUn"></compteur>
+        <compteur @incremente="plusUn"></compteur>
+    </div>
+    
+    <!-- Modèle -->
+    <script>
+        const app = Vue.createApp({
+            data() {
+                return {
+                    total: 0
+                }
+            },
+            methods: {
+                plusUn() {
+                    this.total++;
+                }
+            }
+        });
+        // On définie le composant global compteur
+        app.component('compteur', {
+            data() {
+                return {
+                    valeur: 0
+                }
+            },
+            methods: {
+                ajouteUn() {
+                    this.valeur++;
+                    this.$emit('incremente');
+                }
+            },
+            template: '<button @click="ajouteUn">{{valeur}}</button>'
+        })
+        app.mount('#app');
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>projet 2-16</title>
+    <script src="https://unpkg.com/vue@next"></script>
+    <!-- Lib axios pour faire des requêtes -->
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <style>
+        .container{
+            background: #f1f1f1;
+            padding: 2rem;
+            width: 50rem;
+            border-radius: 1rem;
+        }
+        .card {
+            display: flex;
+            margin-bottom: 2rem;
+            background: white; 
+            border-radius: 1rem;
+            overflow: hidden;
+            width: 40rem;
+            height: 8rem;
+            transition: all 0.5s;
+            transform-origin: left;
+        }
+        img {
+            width: 8rem;
+            object-fit: cover;
+        }
+        .card:hover{
+            width: 50rem;
+            height: 9rem;
+        }
+        .card:last-child{
+            margin-bottom: 0;
+        }
+        .text {
+            margin-left: 1rem;
+        }
+        p {
+            margin: 0;
+            line-height: 1;
+        }
+        .name {
+            font-size: 3rem;
+            font-weight: 500;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 36. Organiser une application en hiérarchie de composants -->
+
+    <!-- Avec des composant locaux -->
+    <!-- Vue -->
+    <div id="app">
+        <div class="container">
+            <tous :personnes="users"></tous>
+        </div>
+    </div>
+    
+    <!-- Modèle -->
+    <script>        
+        const urlApi = 'https://randomuser.me/api/?results=10';
+
+        // Composant local Un
+        const Un = {
+            template:   `<img v-bind:src="unePersonne.picture.large">
+                        <div class="text">
+                            <p><span class="name">{{unePersonne.name.first}} {{unePersonne.name.last}}</span><br>
+                            {{unePersonne.location.city}} - {{unePersonne.location.country}}</p>
+                        </div>`,
+            props: ['unePersonne']
+        }
+
+        // Composant local Tous
+        const Tous = {
+            template:   `<div class="card" v-for="personne in personnes">
+                            <un :unePersonne="personne"></un>
+                        </div>`,
+            components: {
+                'un': Un
+            },
+            props: ['personnes']
+        }
+        
+        // Application
+        const app = Vue.createApp({
+            data() {
+                return {
+                    users: []
+                }
+            },
+            created() {
+                axios.get(urlApi).then(function(reponse) {
+                    console.log(reponse.data.results);
+                    vm.users = reponse.data.results;
+                });
+                // fetch(urlApi)
+                //     .then((results) => {
+                //         return results.json();
+                //     })
+                //     .then((data) => {
+                //         console.log(data.results);
+                //         vm.users = data.results;
+                //     });
+            },
+            components: {
+                'tous': Tous
+            }
+        });
+        let vm = app.mount('#app');
+    </script>
+
+</body>
+</html>

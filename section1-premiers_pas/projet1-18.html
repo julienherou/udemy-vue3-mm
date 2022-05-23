@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>projet 1-18 - Gestion des évènements</title>
+    <script src="https://unpkg.com/vue@next"></script>
+</head>
+<body>
+
+    <!-- 11. Gestion évènementielle -->
+    
+    <!-- Gestion des évènements -->
+    <!-- Vue -->
+    <div id="app">
+        <p>Nombre de clics sur le bouton : {{compteur}}</p>
+        <button v-on:click="compteur++">Incrémenter le compteur</button>
+        <!-- on peut remplacer v-on:click par @click -->
+    </div>
+
+    <!-- Modèle -->
+    <script>
+        const app = Vue.createApp({
+            data() {
+                return {
+                    compteur: 0
+                }
+            }
+        });
+        app.mount('#app');
+    </script>
+
+</body>
+</html>

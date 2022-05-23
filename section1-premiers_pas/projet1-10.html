@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>projet 1-10</title>
+    <script src="https://unpkg.com/vue@next"></script>
+</head>
+<body>
+
+    <!-- 8. innerHTML et nœud texte -->
+
+    <div id="app">
+        <p>Nom : <span v-text="personne.nom"></span><br>
+        Prenom : <span v-text="personne.prenom"></span><br>
+        Âge : <span v-text="personne.age"></span></p>
+    </div>
+
+    <script>
+        const app = Vue.createApp({
+            data() {
+                return {
+                    // On retourne un objet personne
+                    // qui sera un objet json
+                    personne: {
+                        nom: 'Doe',
+                        prenom: 'John',
+                        age: '25'
+                    }
+                }
+            }
+        });
+        // On peut modifier les propriétés du modèle
+        const vm = app.mount('#app');
+        // SetTimout avec une fonction anonyme
+        setTimeout( () => {
+            vm.personne.age = '90';
+        }, 3000);
+
+    </script>
+
+</body>
+</html>

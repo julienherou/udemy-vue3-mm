@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>projet 1-08 - innerHTML et noeud texte</title>
+    <script src="https://unpkg.com/vue@next"></script>
+</head>
+<body>
+
+    <!-- 8. innerHTML et nœud texte -->
+
+    <div id="app">
+        <p v-text="texteBrut"></p>
+        <p v-html="texteHTML"></p>
+    </div>
+
+    <script>
+        const app = Vue.createApp({
+            data() {
+                return {
+                    texteBrut: 'Un simple texte',
+                    texteHTML: '<strong>Un simple texte gras</strong>'
+                }
+            }
+        });
+        app.mount('#app');
+    </script>
+
+</body>
+</html>

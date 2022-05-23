@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>projet 1-21 - $event</title>
+    <script src="https://unpkg.com/vue@next"></script>
+</head>
+<body>
+    
+    <!-- 12. L'objet $event dans la gestion évènementielle -->
+
+    <!-- Vue -->
+    <div id="app">
+        <img src="../img/sergey-semin-Y0WXj3xqJz0-unsplash.jpg" @mousemove="affCoord($event)">
+        <div>{{xy}}</div>
+    </div>
+
+    <!-- Modèle -->
+    <script>
+        const app = Vue.createApp({
+            data() {
+                return {
+                    xy: ''
+                }
+            },
+            methods: {
+                affCoord(ev) {
+                    this.xy = 'x = ' + ev.offsetX + ', y = ' + ev.offsetY;
+                }
+            }
+        });
+        app.mount('#app');
+    </script>
+
+</body>
+</html>

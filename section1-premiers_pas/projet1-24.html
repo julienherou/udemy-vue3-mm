@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>projet 1-24</title>
+    <script src="https://unpkg.com/vue@next"></script>
+</head>
+
+<body>
+
+    <!-- 14. Suffixes stop et prevent de Vue -->
+
+    <!-- Vue -->
+    <div id="app">
+        <div @keydown="actionParent">
+            <input type="text" @keydown.prevent.stop="action($event)">
+        </div>
+        <!-- Exemples de Modificateurs -->
+        <!-- Pour indiquer qu'on ne veut qu'un seul click -->
+        <button @click.once="action">Cliquez ici</button>
+        <!-- Exécute action uniquement en appuyant sur le code de la touche -->
+        <input type="text" @keyup.code="action">
+        <!-- enter, tab, delete, esc, space, up, down, right, left, -->
+        <!-- page-down, page-up, f1 à f12, ctrl, alt, shift -->
+    </div>
+
+    <!-- Modèle -->
+    <script>
+        const app = Vue.createApp({
+            methods: {
+                action(ev) {
+                    console.log('Evènement traité dans le input');
+                    // ev.preventDefault();
+                    // ev.stopPropagation();
+                },
+                actionParent() {
+                    console.log('Evènement traité dans le parent');
+                }
+            }
+        });
+        app.mount('#app');
+    </script>
+
+</body>
+
+</html>

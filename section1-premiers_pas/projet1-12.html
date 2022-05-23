@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>projet 1-12 - Binding bidirectionnel</title>
+    <script src="https://unpkg.com/vue@next"></script>
+</head>
+<body>
+
+    <!-- 9. Binding bidirectionnel -->
+
+    <!-- Vue -->
+    <div id="app">
+        <!-- Binding bidirectionnel : v-model-->
+        <!-- A utiliser sur une balise de formulaire -->
+        <input type="text" placeholder="Entrez votre nom" v-model="nom">
+        Bonjour {{nom}}
+    </div>
+
+    <!-- Modèle -->
+    <script>
+        const app = Vue.createApp({
+            data() {
+                return {
+                    nom: ''
+                }
+            }
+        });
+        app.mount('#app');
+    </script>
+
+</body>
+</html>

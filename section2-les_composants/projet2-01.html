@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>projet 2-01</title>
+    <script src="https://unpkg.com/vue@next"></script>
+</head>
+<body>
+
+    <!-- 27. Introduction aux composants Vue JS -->
+
+    <!-- Votre premier composant global -->
+    <!-- Vue -->
+    <div id="app">
+        <bonjour></bonjour>
+        <bonjour></bonjour>
+        <bonjour></bonjour>
+        <bonjour />
+    </div>
+    
+    <!-- Modèle -->
+    <script>
+        const app = Vue.createApp({
+        });
+        // on insère un composant avec comme premier paramètre le nom du composant,
+        // le deuxième paramètre est un objet json qui contient au minimum un template
+        app.component('bonjour', {
+            template: '<div>Bonjour</div>'
+        });
+        app.mount('#app');
+    </script>
+
+</body>
+</html>
