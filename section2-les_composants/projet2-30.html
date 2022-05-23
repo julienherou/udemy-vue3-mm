@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>projet 2-30</title>
+    <script src="https://unpkg.com/vue@next"></script>
+    <style>
+        img {
+            transition: opacity 1s ease-in;
+        }
+    </style>
+    <script>
+        function cacherAfficher() {
+            let imageElt = document.querySelector('#chat');
+            let boutonElt = document.querySelector('#bouton');
+            if (boutonElt.innerHTML == "Cacher") {
+                boutonElt.innerHTML = "Afficher";
+                imageElt.setAttribute('style', 'opacity: 0');
+            } else {
+                boutonElt.innerHTML = "Cacher";
+                imageElt.setAttribute('style', 'opacity: 1');
+            }
+        }
+    </script>
+</head>
+<body>
+
+    <button id="bouton" onclick="cacherAfficher();">Cacher</button>
+    <img src="../img/sergey-semin-Y0WXj3xqJz0-unsplash.jpg" id="chat">
+
+</body> 
+</html>
